@@ -1,6 +1,8 @@
 # MaxScriptWebServer
 
-Embedded MaxScript WebServer to remote execute Maxscript
+It's an Embedded MaxScript WebServer to remote execute Maxscript.
+
+Notice: Only tested in 3ds MAX 2014 x64.
 
 ## how to use
 
