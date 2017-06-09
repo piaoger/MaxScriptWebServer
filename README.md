@@ -15,6 +15,13 @@ start startmax.bat
 
 2. You can even modify C# source for more customizations.
 
+```
+open the source in visual studio 2013
+add reference: Autodesk.Model.dll, UiViewModes.dll
+build in release mode
+copy the result to dist folder from bin/release
+```
+
 ## Reference
 
 [Embedding a Web Server in 3ds Max using .NET](http://area.autodesk.com/blogs/the-3ds-max-blog/embedding-a-web-server-in-3ds-max-using-net)
