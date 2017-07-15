@@ -1,0 +1,4 @@
+
+*.suo
+/code/WebServer/bin/
+/code/WebServer/obj/

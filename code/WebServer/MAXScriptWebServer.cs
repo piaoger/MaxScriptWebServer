@@ -44,7 +44,7 @@ namespace MAXScriptWebServer
         /// <summary>
         /// The HTML sent back from 3ds Max to the web client. 
         /// </summary>
-        const string HtmlResponseText = @"
+        const string HtmlResponseTextTemplate = @"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">
 <html>
 	<head>
@@ -53,7 +53,7 @@ namespace MAXScriptWebServer
 	<body>
     <h1>Welcome to the MAXScript web server</h1>
     <p>Type in your MAXScript code here:</p>
-    <form action=""http://localhost:8080/"" method=""post"">
+    <form action=""http://localhost:{{PORT}}/"" method=""post"">
         <textarea rows=""4"" cols=""50"" name=""code"">
 -- Some sample MAXScript code 
 sphere radius:5 pos:[0, 0, 0]
@@ -63,13 +63,13 @@ sphere radius:5 pos:[10, 10, 20]
         </textarea>
         <input type=""submit"" value=""Submit"">
     </form>
-    <form action=""http://localhost:8080/exit"">
+    <form action=""http://localhost:{{PORT}}/exit"">
         <input type=""submit"" value=""Kill web server"">
     </form>
     <p>Your previous request was:</p>
     <p>
         <textarea rows=""4"" cols=""50"">
-<!--REQUEST--> 
+{{REQUEST}}
         </textarea>
     </p>
 	</body>
@@ -106,7 +106,7 @@ sphere radius:5 pos:[10, 10, 20]
 
         /// <summary>
         /// Web request handling loop. Terminated when the user 
-        /// makes a request to http://localhost:8080/exit 
+        /// makes a request to http://localhost:{{port}}/exit 
         /// </summary>
         public void ListenLoop()
         {
@@ -131,7 +131,8 @@ sphere radius:5 pos:[10, 10, 20]
                         var code = GetFormData(request, "code");
                         
                         // We return the HTML constant string, embedding the request body.
-                        var responseText = HtmlResponseText.Replace("<!--REQUEST-->", code);
+                        var responseText = HtmlResponseTextTemplate.Replace("{{PORT}}", port);
+                        responseText = responseText.Replace("{{REQUEST}}", code);
                         WriteResponse(context, responseText);
 
                         // Execute the evaluation of the code as MAXScript on the main thread. 
@@ -198,9 +199,9 @@ sphere radius:5 pos:[10, 10, 20]
                 }
 
                 // Receieve requests on port 8080. (e.g. http://localhost:8080/) 
-		// http://www.itgo.me/a/4185947601524058541/httplistener-access-denied
+                // http://www.itgo.me/a/4185947601524058541/httplistener-access-denied
                 // listener.Prefixes.Add("http://*:"+ port + "/");
-		// 
+                // 
                 listener.Prefixes.Add("http://localhost:"+ port + "/");
                 listener.Prefixes.Add("http://127.0.0.1:"+ port + "/");
                 try

@@ -1,6 +1,8 @@
 # MaxScriptWebServer
 
-It's an Embedded MaxScript WebServer to remote execute Maxscript.
+![Project logo](./dist/logo.png)
+
+It's an Embedded MaxScript WebServer to remote execute Maxscript. You can find more information in [project page](https://github.com/piaoger/MaxScriptWebServer)
 
 Notice: Only tested in 3ds MAX 2014 x64.
 
@@ -15,7 +17,11 @@ start startmax.bat
 
 1. You can change listening port in runwebserver.ms
 
-2. You can even modify C# source for more customizations.
+2. You can change 3ds Max directory in startmax.bat
+
+   environment variable: AUTODESK_3DSMAX_INSTALLDIR
+
+3. You can even modify C# source for more customizations.
 
 ```
 open the source in visual studio 2013
