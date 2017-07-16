@@ -6,5 +6,4 @@ set path=%path%;"C:\Program Files\3ds Max 2014\";"C:\Program Files\Autodesk\3ds 
 
 taskkill /f /im 3dsmax.exe
 
-cd %THIS_FOLDER%
-start 3dsmax.exe -U MAXScript runwebserver.ms
+start 3dsmax.exe -U MAXScript %THIS_FOLDER%\runwebserver.ms
