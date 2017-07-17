@@ -2,7 +2,7 @@ fn startWebServer port = (
     assembly = dotNetClass "System.Reflection.Assembly"
 
     localPath = GetFilenamePath (GetSourceFileName())
-    assemblyfile=localPath + "MAXScriptWebServer.dll"
+    assemblyfile = localPath + "MAXScriptWebServer.dll"
 
     assembly.LoadFile (assemblyfile)
 

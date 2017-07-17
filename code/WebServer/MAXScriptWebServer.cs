@@ -226,10 +226,10 @@ sphere radius:5 pos:[10, 10, 20]
 
                 // Receieve requests on port 8080. (e.g. http://localhost:8080/)
                 // http://www.itgo.me/a/4185947601524058541/httplistener-access-denied
+                // https://stackoverflow.com/questions/4019466/httplistener-access-denied
                 // listener.Prefixes.Add("http://*:"+ port + "/");
-                //
+                // listener.Prefixes.Add("http://127.0.0.1:"+ port + "/");
                 listener.Prefixes.Add("http://localhost:"+ port + "/");
-                listener.Prefixes.Add("http://127.0.0.1:"+ port + "/");
                 try
                 {
                     WriteLine("Starting HTTP listener");
